@@ -6,7 +6,6 @@ using UnityEngine;
 public class HandPresencePhysics : MonoBehaviour
 {
 
-    public Transform target;
     private Rigidbody rb;
     [SerializeField] private Collider[] handColliders;
 
