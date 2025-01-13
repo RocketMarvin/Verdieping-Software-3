@@ -34,7 +34,6 @@ public class HandPresencePhysics : MonoBehaviour
         foreach (var item in handColliders)
         {
             item.enabled = false;
-            print("tetst");
         }
     }
 }

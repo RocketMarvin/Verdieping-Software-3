@@ -12,8 +12,8 @@ public class KeyAssemblySystem : MonoBehaviour
     [SerializeField] private XRBaseInteractable button;
 
     [Header("Full Key")]
-    [SerializeField] private GameObject fullKeyPrefab; // Het volledige sleutelobject
-    [SerializeField] private Transform spawnPoint; // Waar de sleutel wordt gespawnd
+    [SerializeField] private GameObject fullKeyPrefab; 
+    [SerializeField] private Transform spawnPoint; 
 
     private bool keyAssembled = false;
 
@@ -56,6 +56,23 @@ public class KeyAssemblySystem : MonoBehaviour
         else
         {
             Debug.LogWarning("Volledige sleutel prefab of spawnpunt niet ingesteld.");
+        }
+
+        RemoveObjectFromSocket(socket1);
+        RemoveObjectFromSocket(socket2);
+        RemoveObjectFromSocket(socket3);
+    }
+
+    private void RemoveObjectFromSocket(XRSocketInteractor socket)
+    {
+        if (socket.hasSelection)
+        {
+            var interactable = socket.GetOldestInteractableSelected();
+            if (interactable != null)
+            {
+                Destroy(interactable.transform.gameObject); 
+                Debug.Log($"Object uit {socket.name} verwijderd.");
+            }
         }
     }
 }
